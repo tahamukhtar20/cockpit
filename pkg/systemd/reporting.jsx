@@ -397,28 +397,12 @@ const WorkflowRow = ({ message, problemState, reportLinks, label, onReportButton
     return (
         <Split hasGutter>
             <SplitItem>{label}</SplitItem>
-            <SplitItem isFilled>
-                <div style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    width: "100%",
-                    height: "fit-content",
-                    gap: "0.5rem"
-                }}>
-                    {problemState === ProblemState.REPORTING && (
-                        <div style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                        }}>
-                            <Spinner size="md" />
-                        </div>
-                    )}
-                    <p>{status}</p>
-                </div>
-            </SplitItem>
+            {problemState === ProblemState.REPORTING && (
+                <SplitItem>
+                    <Spinner size="md" />
+                </SplitItem>
+            )}
+            <SplitItem isFilled>{status}</SplitItem>
             <SplitItem>{button}</SplitItem>
         </Split>
     );
